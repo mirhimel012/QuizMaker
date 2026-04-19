@@ -1,7 +1,6 @@
 from google import genai
 from dotenv import load_dotenv
 import os, io
-# from gtts import gTTS
 
 # Load .env file
 load_dotenv()
