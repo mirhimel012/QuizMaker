@@ -1,6 +1,7 @@
 from google import genai
 from dotenv import load_dotenv
 import os, io
+from gtts import gTTS 
 
 # Load .env file
 load_dotenv()
@@ -26,6 +27,19 @@ def note_generator(images):
     )
 
     return response.text
+
+
+# AUDIO TRANSCRIPTION
+def audio_transcription(text):
+
+    # convert text to speech
+    speech = gTTS(text, lang='bn', slow=False)
+
+    # store audio in memory
+    audio_buffer = io.BytesIO()
+    speech.write_to_fp(audio_buffer)
+
+    return audio_buffer
 
 
 # QUIZ GENERATOR

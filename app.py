@@ -69,6 +69,20 @@ if pressed:
                 generated_notes = note_generator(pil_images)  # call AI
                 st.markdown(generated_notes)  # show note
 
+        # AUDIO TRANSCRIPTION
+        with st.container(border=True):
+            st.subheader("Audio Transcription")
+
+            with st.spinner("AI is generating audio transcript for you"):
+
+                # remove markdown symbols for speech
+                generated_notes = generated_notes.replace("#","")
+                generated_notes = generated_notes.replace("*","")
+                generated_notes = generated_notes.replace("-","")
+                generated_notes = generated_notes.replace("`","")
+
+                audio_transcript = audio_transcription(generated_notes)
+                st.audio(audio_transcript)  # play audio
 
         # QUIZ GENERATION
         with st.container(border=True):
